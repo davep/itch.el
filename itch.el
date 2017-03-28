@@ -14,7 +14,7 @@
 ;;; Code:
 
 ;;;###autoload
-(defun itch-scratch-buffer (erase)
+(defun itch-scratch-buffer (&optional erase)
   "Quickly switch to the *scratch* buffer.
 
 If ERASE is non-nil reset the content of the buffer."
