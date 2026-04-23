@@ -40,6 +40,7 @@ If ERASE is non-nil reset the content of the buffer."
     (insert initial-scratch-message))
   (lisp-interaction-mode))
 
+;;;###autoload
 (defun itch-markdown-scratch-buffer (&optional erase)
   "Quickly switch to the *scratch: Markdown* buffer.
 
