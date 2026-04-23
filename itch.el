@@ -39,6 +39,24 @@ If ERASE is non-nil reset the content of the buffer."
     (insert initial-scratch-message))
   (lisp-interaction-mode))
 
+(defun itch-markdown-scratch-buffer (&optional erase)
+  "Quickly switch to the *scratch: Markdown* buffer.
+
+If ERASE is non-nil reset the content of the buffer."
+  (interactive "P")
+  (switch-to-buffer "*scratch: Markdown*")
+  (when erase
+    (erase-buffer))
+  (when (string-empty-p (buffer-string))
+    (insert initial-scratch-message)
+    (save-excursion
+      (goto-char (point-min))
+      (delete-region (point) (+ (point) 3))
+      (insert "[//]: # (")
+      (end-of-line)
+      (insert ")")))
+  (markdown-mode))
+
 (provide 'itch)
 
 ;;; itch.el ends here
