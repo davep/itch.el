@@ -1,8 +1,8 @@
 ;;; itch.el --- Scratch buffer tools  -*- lexical-binding: t; -*-
-;; Copyright 2017 by Dave Pearson <davep@davep.org>
+;; Copyright 2017-2026 by Dave Pearson <davep@davep.org>
 
 ;; Author: Dave Pearson <davep@davep.org>
-;; Version: 1.2
+;; Version: 1.3.0
 ;; Keywords: convenience
 ;; URL: https://github.com/davep/itch.el
 ;; Package-Requires: ((emacs "24.4"))
