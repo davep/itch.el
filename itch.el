@@ -36,7 +36,7 @@ If ERASE is non-nil reset the content of the buffer."
   (switch-to-buffer "*scratch*")
   (when erase
     (erase-buffer))
-  (when (string= (buffer-string) "")
+  (when (string-empty-p (buffer-string))
     (insert initial-scratch-message))
   (lisp-interaction-mode))
 
