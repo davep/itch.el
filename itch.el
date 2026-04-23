@@ -27,17 +27,23 @@
 
 ;;; Code:
 
+(defun itch--setup (buffer erase)
+  "Setup BUFFER as a scratch buffer.
+
+If ERASE is non-nil reset the content of the buffer."
+  (switch-to-buffer buffer)
+  (when erase
+    (erase-buffer))
+  (when (string-empty-p (buffer-string))
+    (insert initial-scratch-message)))
+
 ;;;###autoload
 (defun itch-scratch-buffer (&optional erase)
   "Quickly switch to the *scratch* buffer.
 
 If ERASE is non-nil reset the content of the buffer."
   (interactive "P")
-  (switch-to-buffer "*scratch*")
-  (when erase
-    (erase-buffer))
-  (when (string-empty-p (buffer-string))
-    (insert initial-scratch-message))
+  (itch--setup "*scratch*" erase)
   (lisp-interaction-mode))
 
 ;;;###autoload
@@ -46,17 +52,13 @@ If ERASE is non-nil reset the content of the buffer."
 
 If ERASE is non-nil reset the content of the buffer."
   (interactive "P")
-  (switch-to-buffer "*scratch: Markdown*")
-  (when erase
-    (erase-buffer))
-  (when (string-empty-p (buffer-string))
-    (insert initial-scratch-message)
-    (save-excursion
-      (goto-char (point-min))
-      (delete-region (point) (+ (point) 3))
-      (insert "[//]: # (")
-      (end-of-line)
-      (insert ")")))
+  (itch--setup "*scratch: Markdown*" erase)
+  (save-excursion
+    (goto-char (point-min))
+    (delete-region (point) (+ (point) 3))
+    (insert "[//]: # (")
+    (end-of-line)
+    (insert ")"))
   (markdown-mode))
 
 (provide 'itch)
