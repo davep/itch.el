@@ -59,7 +59,7 @@ If ERASE is non-nil reset the content of the buffer."
     (insert "[//]: # (")
     (end-of-line)
     (insert ")"))
-  (markdown-mode))
+  (funcall (symbol-function 'markdown-mode)))
 
 (provide 'itch)
 
